@@ -1,0 +1,36 @@
+{
+  "id": "content_section",
+  "type": "SharedSlice",
+  "name": "ContentSection",
+  "description": "ContentSection",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "title",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "heading1,strong,em"
+          }
+        },
+        "simpson_image": {
+          "type": "Image",
+          "config": {
+            "label": "simpson_image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
