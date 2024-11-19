@@ -2,7 +2,7 @@ import React from "react";
 
 function NavBar() {
   return (
-    <div style={{ backgroundColor: "red", width: "auto", height: "150px" }}>
+    <div style={{ backgroundColor: "red", width: "auto", height: "88px" }}>
       Navigation Bar
     </div>
   );

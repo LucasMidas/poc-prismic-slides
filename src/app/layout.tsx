@@ -31,7 +31,14 @@ export default function RootLayout({
         style={{ width: "100vw", height: "100vh" }}
       >
         <NavBar />
-        <main>{children}</main>
+        <main
+          style={{
+            width: "100vw",
+            height: "calc(100vh - 88px)",
+          }}
+        >
+          {children}
+        </main>
       </body>
     </html>
   );

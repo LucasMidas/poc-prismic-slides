@@ -18,48 +18,82 @@ const ContentSection = ({ slice }: ContentSectionProps): JSX.Element => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
       style={{
-        height: "calc(100vh - 150px)",
+        height: "calc(100vh - 88px)",
         display: "grid",
-        gridTemplateColumns: "2fr 1fr",
-        backgroundColor: "blue",
+        gridTemplateColumns: "1.5fr 1fr",
       }}
     >
-      <section>
+      <article
+        style={{
+          padding: "16px",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          gap: "16px",
+        }}
+      >
         {isFilled.keyText(slice.primary.title) && (
           <header>
-            <h1>{slice.primary.title}</h1>
+            <h1 style={{ fontSize: "3.5rem", fontWeight: 700 }}>
+              {slice.primary.title}
+            </h1>
           </header>
         )}
-        {isFilled.keyText(slice.primary.title) && (
+        {isFilled.keyText(slice.primary.subtitle) && (
           <header>
-            <h2>{slice.primary.title}</h2>
+            <h2 style={{ fontSize: "2.5rem", fontWeight: 400 }}>
+              {slice.primary.subtitle}
+            </h2>
           </header>
         )}
-        {isFilled.keyText(slice.primary.text) && <p>{slice.primary.text}</p>}
-
-        <div>
+        {isFilled.keyText(slice.primary.text) && (
+          <p style={{ fontSize: "1em" }}>{slice.primary.text}</p>
+        )}
+        <div style={{ display: "flex", gap: "16px", paddingTop: "16px" }}>
           {isFilled.link(slice.primary.download_link) && (
-            <span>
-              <PrismicNextLink field={slice.primary.download_link}>
-                {slice.primary.download_link.text}
-              </PrismicNextLink>
-            </span>
+            <PrismicNextLink
+              field={slice.primary.download_link}
+              style={{
+                padding: "10px 20px",
+                borderRadius: "6px",
+                background: "#6439FF",
+                color: "white",
+              }}
+            >
+              {slice.primary.download_link.text}
+            </PrismicNextLink>
           )}
           {isFilled.link(slice.primary.more_information_link) && (
-            <span>
-              <PrismicNextLink field={slice.primary.more_information_link} />
-            </span>
+            <PrismicNextLink
+              field={slice.primary.more_information_link}
+              style={{
+                padding: "10px 20px",
+                borderRadius: "6px",
+                background: "#F7F7F7",
+                color: "black",
+              }}
+            >
+              {slice.primary.more_information_link.text}
+            </PrismicNextLink>
           )}
         </div>
-      </section>
+      </article>
       {isFilled.image(slice.primary.simpson_image) && (
-        <figure style={{ width: "100%", padding: "16px", height: "100%" }}>
+        <figure
+          style={{
+            height: "calc(100vh - 88px)",
+            display: "flex",
+            justifyContent: "right",
+          }}
+        >
           <PrismicNextImage
             field={slice.primary.simpson_image}
             style={{
-              width: "100%",
-              height: "100%",
+              padding: "16px 0px",
+              width: "auto",
               objectFit: "contain",
+              height: "100%",
+              position: "relative",
             }}
           />
         </figure>
