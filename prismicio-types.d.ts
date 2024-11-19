@@ -283,12 +283,22 @@ export interface ContentSectionSliceDefaultPrimary {
   /**
    * title field in *ContentSection → Default → Primary*
    *
-   * - **Field Type**: Rich Text
+   * - **Field Type**: Text
    * - **Placeholder**: *None*
    * - **API ID Path**: content_section.default.primary.title
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  title: prismic.RichTextField;
+  title: prismic.KeyTextField;
+
+  /**
+   * subtitle field in *ContentSection → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_section.default.primary.subtitle
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  subtitle: prismic.KeyTextField;
 
   /**
    * simpson_image field in *ContentSection → Default → Primary*
@@ -299,6 +309,36 @@ export interface ContentSectionSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   simpson_image: prismic.ImageField<never>;
+
+  /**
+   * text field in *ContentSection → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_section.default.primary.text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  text: prismic.KeyTextField;
+
+  /**
+   * downloadLink field in *ContentSection → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_section.default.primary.download_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  download_link: prismic.LinkField;
+
+  /**
+   * more_information_link field in *ContentSection → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_section.default.primary.more_information_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  more_information_link: prismic.LinkField;
 }
 
 /**

@@ -13,12 +13,17 @@
       "imageUrl": "",
       "primary": {
         "title": {
-          "type": "StructuredText",
+          "type": "Text",
           "config": {
             "label": "title",
-            "placeholder": "",
-            "allowTargetBlank": true,
-            "multi": "heading1,strong,em"
+            "placeholder": ""
+          }
+        },
+        "subtitle": {
+          "type": "Text",
+          "config": {
+            "label": "subtitle",
+            "placeholder": ""
           }
         },
         "simpson_image": {
@@ -27,6 +32,33 @@
             "label": "simpson_image",
             "constraint": {},
             "thumbnails": []
+          }
+        },
+        "text": {
+          "type": "Text",
+          "config": {
+            "label": "text",
+            "placeholder": ""
+          }
+        },
+        "download_link": {
+          "type": "Link",
+          "config": {
+            "label": "downloadLink",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "select": null,
+            "allowText": true
+          }
+        },
+        "more_information_link": {
+          "type": "Link",
+          "config": {
+            "label": "more_information_link",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "select": null,
+            "allowText": true
           }
         }
       },

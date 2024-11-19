@@ -26,18 +26,36 @@
 				"__TYPE__": "ImageContent",
 				"thumbnails": {}
 			},
+			"subtitle": {
+				"__TYPE__": "FieldContent",
+				"value": "apple",
+				"type": "Text"
+			},
 			"title": {
-				"__TYPE__": "StructuredTextContent",
-				"value": [
-					{
-						"type": "heading1",
-						"content": {
-							"text": "Hola!",
-							"spans": []
-						},
-						"direction": "ltr"
-					}
-				]
+				"__TYPE__": "FieldContent",
+				"value": "wind",
+				"type": "Text"
+			},
+			"text": {
+				"__TYPE__": "FieldContent",
+				"value": "rise",
+				"type": "Text"
+			},
+			"download_link": {
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "http://twitter.com",
+					"text": "handsome"
+				}
+			},
+			"more_information_link": {
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "http://twitter.com",
+					"text": "third"
+				}
 			}
 		},
 		"items": []
