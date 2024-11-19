@@ -4,7 +4,10 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type HomeDocumentDataSlicesSlice = AlternateGridSlice | ContentSectionSlice;
+type HomeDocumentDataSlicesSlice =
+  | NavBarSlice
+  | AlternateGridSlice
+  | ContentSectionSlice;
 
 /**
  * Content for home documents
@@ -301,14 +304,14 @@ export interface ContentSectionSliceDefaultPrimary {
   subtitle: prismic.KeyTextField;
 
   /**
-   * simpson_image field in *ContentSection → Default → Primary*
+   * phone_image field in *ContentSection → Default → Primary*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
-   * - **API ID Path**: content_section.default.primary.simpson_image
+   * - **API ID Path**: content_section.default.primary.phone_image
    * - **Documentation**: https://prismic.io/docs/field#image
    */
-  simpson_image: prismic.ImageField<never>;
+  phone_image: prismic.ImageField<never>;
 
   /**
    * text field in *ContentSection → Default → Primary*
@@ -371,6 +374,93 @@ export type ContentSectionSlice = prismic.SharedSlice<
   ContentSectionSliceVariation
 >;
 
+/**
+ * Item in *NavBar → Default → Primary → links*
+ */
+export interface NavBarSliceDefaultPrimaryLinksItem {
+  /**
+   * link field in *NavBar → Default → Primary → links*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: nav_bar.default.primary.links[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField;
+}
+
+/**
+ * Primary content in *NavBar → Default → Primary*
+ */
+export interface NavBarSliceDefaultPrimary {
+  /**
+   * logo field in *NavBar → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: nav_bar.default.primary.logo
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  logo: prismic.ImageField<never>;
+
+  /**
+   * links field in *NavBar → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: nav_bar.default.primary.links[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  links: prismic.GroupField<Simplify<NavBarSliceDefaultPrimaryLinksItem>>;
+
+  /**
+   * sign_in field in *NavBar → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: nav_bar.default.primary.sign_in
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  sign_in: prismic.LinkField;
+
+  /**
+   * sign_up field in *NavBar → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: nav_bar.default.primary.sign_up
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  sign_up: prismic.LinkField;
+}
+
+/**
+ * Default variation for NavBar Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type NavBarSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<NavBarSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *NavBar*
+ */
+type NavBarSliceVariation = NavBarSliceDefault;
+
+/**
+ * NavBar Shared Slice
+ *
+ * - **API ID**: `nav_bar`
+ * - **Description**: NavBar
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type NavBarSlice = prismic.SharedSlice<"nav_bar", NavBarSliceVariation>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -408,6 +498,11 @@ declare module "@prismicio/client" {
       ContentSectionSliceDefaultPrimary,
       ContentSectionSliceVariation,
       ContentSectionSliceDefault,
+      NavBarSlice,
+      NavBarSliceDefaultPrimaryLinksItem,
+      NavBarSliceDefaultPrimary,
+      NavBarSliceVariation,
+      NavBarSliceDefault,
     };
   }
 }

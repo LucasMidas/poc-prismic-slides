@@ -1,8 +1,8 @@
 {
-  "id": "content_section",
+  "id": "nav_bar",
   "type": "SharedSlice",
-  "name": "ContentSection",
-  "description": "ContentSection",
+  "name": "NavBar",
+  "description": "NavBar",
   "variations": [
     {
       "id": "default",
@@ -12,49 +12,47 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
-        "title": {
-          "type": "Text",
-          "config": {
-            "label": "title",
-            "placeholder": ""
-          }
-        },
-        "subtitle": {
-          "type": "Text",
-          "config": {
-            "label": "subtitle",
-            "placeholder": ""
-          }
-        },
-        "phone_image": {
+        "logo": {
           "type": "Image",
           "config": {
-            "label": "phone_image",
+            "label": "logo",
             "constraint": {},
             "thumbnails": []
           }
         },
-        "text": {
-          "type": "Text",
+        "links": {
+          "type": "Group",
           "config": {
-            "label": "text",
-            "placeholder": ""
+            "label": "links",
+            "repeat": true,
+            "fields": {
+              "link": {
+                "type": "Link",
+                "config": {
+                  "label": "link",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "select": null,
+                  "allowText": true
+                }
+              }
+            }
           }
         },
-        "download_link": {
+        "sign_in": {
           "type": "Link",
           "config": {
-            "label": "downloadLink",
+            "label": "sign_in",
             "placeholder": "",
-            "allowTargetBlank": false,
+            "allowTargetBlank": true,
             "select": null,
             "allowText": true
           }
         },
-        "more_information_link": {
+        "sign_up": {
           "type": "Link",
           "config": {
-            "label": "more_information_link",
+            "label": "sign_up",
             "placeholder": "",
             "allowTargetBlank": true,
             "select": null,

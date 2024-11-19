@@ -5,4 +5,5 @@ import dynamic from "next/dynamic";
 export const components = {
   alternate_grid: dynamic(() => import("./AlternateGrid")),
   content_section: dynamic(() => import("./ContentSection")),
+  nav_bar: dynamic(() => import("./NavBar")),
 };

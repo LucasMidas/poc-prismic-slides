@@ -78,7 +78,7 @@ const ContentSection = ({ slice }: ContentSectionProps): JSX.Element => {
           )}
         </div>
       </article>
-      {isFilled.image(slice.primary.simpson_image) && (
+      {isFilled.image(slice.primary.phone_image) && (
         <figure
           style={{
             height: "calc(100vh - 88px)",
@@ -87,7 +87,7 @@ const ContentSection = ({ slice }: ContentSectionProps): JSX.Element => {
           }}
         >
           <PrismicNextImage
-            field={slice.primary.simpson_image}
+            field={slice.primary.phone_image}
             style={{
               padding: "16px 0px",
               width: "auto",
