@@ -11,7 +11,6 @@ export type NavBarProps = SliceComponentProps<Content.NavBarSlice>;
  * Component for "NavBar" Slices.
  */
 const NavBar = ({ slice }: NavBarProps): JSX.Element => {
-  console.log(slice.primary);
   return (
     <nav
       data-slice-type={slice.slice_type}

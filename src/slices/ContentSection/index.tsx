@@ -12,7 +12,6 @@ export type ContentSectionProps =
  * Component for "ContentSection" Slices.
  */
 const ContentSection = ({ slice }: ContentSectionProps): JSX.Element => {
-  console.log(slice.primary.title);
   return (
     <section
       data-slice-type={slice.slice_type}

@@ -1,0 +1,74 @@
+{
+  "id": "carrousel",
+  "type": "SharedSlice",
+  "name": "Carrousel",
+  "description": "Carrousel",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "carrousel_title": {
+          "type": "Text",
+          "config": {
+            "label": "carrousel_title",
+            "placeholder": ""
+          }
+        },
+        "carrousel_information": {
+          "type": "Text",
+          "config": {
+            "label": "carrousel_information",
+            "placeholder": ""
+          }
+        },
+        "carrousel_cards": {
+          "type": "Group",
+          "config": {
+            "label": "carrousel_cards",
+            "repeat": true,
+            "fields": {
+              "card_icon": {
+                "type": "Image",
+                "config": {
+                  "label": "card_icon",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              },
+              "card_title": {
+                "type": "Text",
+                "config": {
+                  "label": "card_title",
+                  "placeholder": ""
+                }
+              },
+              "card_description": {
+                "type": "Text",
+                "config": {
+                  "label": "card_description",
+                  "placeholder": ""
+                }
+              },
+              "card_link": {
+                "type": "Link",
+                "config": {
+                  "label": "card_link",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "select": null,
+                  "allowText": true
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

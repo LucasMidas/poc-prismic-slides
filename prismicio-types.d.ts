@@ -5,6 +5,7 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 type HomeDocumentDataSlicesSlice =
+  | CarrouselSlice
   | NavBarSlice
   | AlternateGridSlice
   | ContentSectionSlice;
@@ -280,6 +281,118 @@ export type AlternateGridSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Item in *Carrousel → Default → Primary → carrousel_cards*
+ */
+export interface CarrouselSliceDefaultPrimaryCarrouselCardsItem {
+  /**
+   * card_icon field in *Carrousel → Default → Primary → carrousel_cards*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: carrousel.default.primary.carrousel_cards[].card_icon
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  card_icon: prismic.ImageField<never>;
+
+  /**
+   * card_title field in *Carrousel → Default → Primary → carrousel_cards*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: carrousel.default.primary.carrousel_cards[].card_title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  card_title: prismic.KeyTextField;
+
+  /**
+   * card_description field in *Carrousel → Default → Primary → carrousel_cards*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: carrousel.default.primary.carrousel_cards[].card_description
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  card_description: prismic.KeyTextField;
+
+  /**
+   * card_link field in *Carrousel → Default → Primary → carrousel_cards*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: carrousel.default.primary.carrousel_cards[].card_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  card_link: prismic.LinkField;
+}
+
+/**
+ * Primary content in *Carrousel → Default → Primary*
+ */
+export interface CarrouselSliceDefaultPrimary {
+  /**
+   * carrousel_title field in *Carrousel → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: carrousel.default.primary.carrousel_title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  carrousel_title: prismic.KeyTextField;
+
+  /**
+   * carrousel_information field in *Carrousel → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: carrousel.default.primary.carrousel_information
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  carrousel_information: prismic.KeyTextField;
+
+  /**
+   * carrousel_cards field in *Carrousel → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: carrousel.default.primary.carrousel_cards[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  carrousel_cards: prismic.GroupField<
+    Simplify<CarrouselSliceDefaultPrimaryCarrouselCardsItem>
+  >;
+}
+
+/**
+ * Default variation for Carrousel Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CarrouselSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<CarrouselSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Carrousel*
+ */
+type CarrouselSliceVariation = CarrouselSliceDefault;
+
+/**
+ * Carrousel Shared Slice
+ *
+ * - **API ID**: `carrousel`
+ * - **Description**: Carrousel
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CarrouselSlice = prismic.SharedSlice<
+  "carrousel",
+  CarrouselSliceVariation
+>;
+
+/**
  * Primary content in *ContentSection → Default → Primary*
  */
 export interface ContentSectionSliceDefaultPrimary {
@@ -494,6 +607,11 @@ declare module "@prismicio/client" {
       AlternateGridSliceVariation,
       AlternateGridSliceDefault,
       AlternateGridSliceImageRight,
+      CarrouselSlice,
+      CarrouselSliceDefaultPrimaryCarrouselCardsItem,
+      CarrouselSliceDefaultPrimary,
+      CarrouselSliceVariation,
+      CarrouselSliceDefault,
       ContentSectionSlice,
       ContentSectionSliceDefaultPrimary,
       ContentSectionSliceVariation,
