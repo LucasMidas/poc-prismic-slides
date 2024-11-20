@@ -23,6 +23,7 @@
 
 .content-section-image {
   height: calc(100vh - 88px);
+  max-height: 500px;
   display: flex;
   justify-content: right;
 }
@@ -37,7 +38,7 @@
   padding-top: 16px;
 }
 
-@media (width < 768px) {
+@media (width <= 768px) {
   .content-section-container {
     grid-template-columns: 1fr;
     height: auto;

@@ -38,7 +38,7 @@
   right: -250px;
 }
 
-@media (width < 768px) {
+@media (width <= 768px) {
   .footer-section-container {
     height: auto;
     text-align: center;
