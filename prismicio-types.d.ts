@@ -4,7 +4,12 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type HomeDocumentDataSlicesSlice = AlternateGridSlice | ContentSectionSlice;
+type HomeDocumentDataSlicesSlice =
+  | FooterSectionSlice
+  | CarrouselSlice
+  | NavBarSlice
+  | AlternateGridSlice
+  | ContentSectionSlice;
 
 /**
  * Content for home documents
@@ -277,28 +282,180 @@ export type AlternateGridSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Item in *Carrousel → Default → Primary → carrousel_cards*
+ */
+export interface CarrouselSliceDefaultPrimaryCarrouselCardsItem {
+  /**
+   * card_icon field in *Carrousel → Default → Primary → carrousel_cards*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: carrousel.default.primary.carrousel_cards[].card_icon
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  card_icon: prismic.ImageField<never>;
+
+  /**
+   * card_title field in *Carrousel → Default → Primary → carrousel_cards*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: carrousel.default.primary.carrousel_cards[].card_title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  card_title: prismic.KeyTextField;
+
+  /**
+   * card_description field in *Carrousel → Default → Primary → carrousel_cards*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: carrousel.default.primary.carrousel_cards[].card_description
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  card_description: prismic.KeyTextField;
+
+  /**
+   * card_link field in *Carrousel → Default → Primary → carrousel_cards*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: carrousel.default.primary.carrousel_cards[].card_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  card_link: prismic.LinkField;
+}
+
+/**
+ * Primary content in *Carrousel → Default → Primary*
+ */
+export interface CarrouselSliceDefaultPrimary {
+  /**
+   * carrousel_title field in *Carrousel → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: carrousel.default.primary.carrousel_title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  carrousel_title: prismic.KeyTextField;
+
+  /**
+   * carrousel_information field in *Carrousel → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: carrousel.default.primary.carrousel_information
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  carrousel_information: prismic.KeyTextField;
+
+  /**
+   * carrousel_cards field in *Carrousel → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: carrousel.default.primary.carrousel_cards[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  carrousel_cards: prismic.GroupField<
+    Simplify<CarrouselSliceDefaultPrimaryCarrouselCardsItem>
+  >;
+}
+
+/**
+ * Default variation for Carrousel Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CarrouselSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<CarrouselSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Carrousel*
+ */
+type CarrouselSliceVariation = CarrouselSliceDefault;
+
+/**
+ * Carrousel Shared Slice
+ *
+ * - **API ID**: `carrousel`
+ * - **Description**: Carrousel
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CarrouselSlice = prismic.SharedSlice<
+  "carrousel",
+  CarrouselSliceVariation
+>;
+
+/**
  * Primary content in *ContentSection → Default → Primary*
  */
 export interface ContentSectionSliceDefaultPrimary {
   /**
    * title field in *ContentSection → Default → Primary*
    *
-   * - **Field Type**: Rich Text
+   * - **Field Type**: Text
    * - **Placeholder**: *None*
    * - **API ID Path**: content_section.default.primary.title
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  title: prismic.RichTextField;
+  title: prismic.KeyTextField;
 
   /**
-   * simpson_image field in *ContentSection → Default → Primary*
+   * subtitle field in *ContentSection → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_section.default.primary.subtitle
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  subtitle: prismic.KeyTextField;
+
+  /**
+   * phone_image field in *ContentSection → Default → Primary*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
-   * - **API ID Path**: content_section.default.primary.simpson_image
+   * - **API ID Path**: content_section.default.primary.phone_image
    * - **Documentation**: https://prismic.io/docs/field#image
    */
-  simpson_image: prismic.ImageField<never>;
+  phone_image: prismic.ImageField<never>;
+
+  /**
+   * text field in *ContentSection → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_section.default.primary.text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  text: prismic.KeyTextField;
+
+  /**
+   * downloadLink field in *ContentSection → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_section.default.primary.download_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  download_link: prismic.LinkField;
+
+  /**
+   * more_information_link field in *ContentSection → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_section.default.primary.more_information_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  more_information_link: prismic.LinkField;
 }
 
 /**
@@ -330,6 +487,188 @@ export type ContentSectionSlice = prismic.SharedSlice<
   "content_section",
   ContentSectionSliceVariation
 >;
+
+/**
+ * Primary content in *FooterSection → Default → Primary*
+ */
+export interface FooterSectionSliceDefaultPrimary {
+  /**
+   * footer_section_image field in *FooterSection → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer_section.default.primary.footer_section_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  footer_section_image: prismic.ImageField<never>;
+
+  /**
+   * footer_section_main_text field in *FooterSection → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer_section.default.primary.footer_section_main_text
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  footer_section_main_text: prismic.RichTextField;
+
+  /**
+   * footer_section_secondary_text field in *FooterSection → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer_section.default.primary.footer_section_secondary_text
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  footer_section_secondary_text: prismic.RichTextField;
+
+  /**
+   * footer_section_link field in *FooterSection → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer_section.default.primary.footer_section_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  footer_section_link: prismic.LinkField;
+
+  /**
+   * footer_section_background_color field in *FooterSection → Default → Primary*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer_section.default.primary.footer_section_background_color
+   * - **Documentation**: https://prismic.io/docs/field#color
+   */
+  footer_section_background_color: prismic.ColorField;
+
+  /**
+   * footer_section_highlighted_text field in *FooterSection → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer_section.default.primary.footer_section_highlighted_text
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  footer_section_highlighted_text: prismic.RichTextField;
+}
+
+/**
+ * Default variation for FooterSection Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type FooterSectionSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<FooterSectionSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *FooterSection*
+ */
+type FooterSectionSliceVariation = FooterSectionSliceDefault;
+
+/**
+ * FooterSection Shared Slice
+ *
+ * - **API ID**: `footer_section`
+ * - **Description**: FooterSection
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type FooterSectionSlice = prismic.SharedSlice<
+  "footer_section",
+  FooterSectionSliceVariation
+>;
+
+/**
+ * Item in *NavBar → Default → Primary → links*
+ */
+export interface NavBarSliceDefaultPrimaryLinksItem {
+  /**
+   * link field in *NavBar → Default → Primary → links*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: nav_bar.default.primary.links[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField;
+}
+
+/**
+ * Primary content in *NavBar → Default → Primary*
+ */
+export interface NavBarSliceDefaultPrimary {
+  /**
+   * logo field in *NavBar → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: nav_bar.default.primary.logo
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  logo: prismic.ImageField<never>;
+
+  /**
+   * links field in *NavBar → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: nav_bar.default.primary.links[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  links: prismic.GroupField<Simplify<NavBarSliceDefaultPrimaryLinksItem>>;
+
+  /**
+   * sign_in field in *NavBar → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: nav_bar.default.primary.sign_in
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  sign_in: prismic.LinkField;
+
+  /**
+   * sign_up field in *NavBar → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: nav_bar.default.primary.sign_up
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  sign_up: prismic.LinkField;
+}
+
+/**
+ * Default variation for NavBar Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type NavBarSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<NavBarSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *NavBar*
+ */
+type NavBarSliceVariation = NavBarSliceDefault;
+
+/**
+ * NavBar Shared Slice
+ *
+ * - **API ID**: `nav_bar`
+ * - **Description**: NavBar
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type NavBarSlice = prismic.SharedSlice<"nav_bar", NavBarSliceVariation>;
 
 declare module "@prismicio/client" {
   interface CreateClient {
@@ -364,10 +703,24 @@ declare module "@prismicio/client" {
       AlternateGridSliceVariation,
       AlternateGridSliceDefault,
       AlternateGridSliceImageRight,
+      CarrouselSlice,
+      CarrouselSliceDefaultPrimaryCarrouselCardsItem,
+      CarrouselSliceDefaultPrimary,
+      CarrouselSliceVariation,
+      CarrouselSliceDefault,
       ContentSectionSlice,
       ContentSectionSliceDefaultPrimary,
       ContentSectionSliceVariation,
       ContentSectionSliceDefault,
+      FooterSectionSlice,
+      FooterSectionSliceDefaultPrimary,
+      FooterSectionSliceVariation,
+      FooterSectionSliceDefault,
+      NavBarSlice,
+      NavBarSliceDefaultPrimaryLinksItem,
+      NavBarSliceDefaultPrimary,
+      NavBarSliceVariation,
+      NavBarSliceDefault,
     };
   }
 }

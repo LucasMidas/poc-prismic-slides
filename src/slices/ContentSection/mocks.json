@@ -3,16 +3,48 @@
 		"__TYPE__": "SharedSliceContent",
 		"variation": "default",
 		"primary": {
-			"simpson_image": {
+			"subtitle": {
+				"__TYPE__": "FieldContent",
+				"value": "apple",
+				"type": "Text"
+			},
+			"title": {
+				"__TYPE__": "FieldContent",
+				"value": "wind",
+				"type": "Text"
+			},
+			"text": {
+				"__TYPE__": "FieldContent",
+				"value": "rise",
+				"type": "Text"
+			},
+			"download_link": {
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "http://twitter.com",
+					"text": "handsome"
+				}
+			},
+			"more_information_link": {
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "http://twitter.com",
+					"text": "third"
+				}
+			},
+			"phone_image": {
+				"__TYPE__": "ImageContent",
 				"origin": {
 					"id": "main",
-					"url": "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5",
-					"width": 5848,
-					"height": 3899
+					"url": "https://images.unsplash.com/photo-1589652717521-10c0d092dea9",
+					"width": 4752,
+					"height": 3168
 				},
-				"url": "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5",
-				"width": 5848,
-				"height": 3899,
+				"url": "https://images.unsplash.com/photo-1589652717521-10c0d092dea9",
+				"width": 4752,
+				"height": 3168,
 				"edit": {
 					"zoom": 1,
 					"crop": {
@@ -21,23 +53,7 @@
 					},
 					"background": "transparent"
 				},
-				"credits": null,
-				"alt": "Hola",
-				"__TYPE__": "ImageContent",
 				"thumbnails": {}
-			},
-			"title": {
-				"__TYPE__": "StructuredTextContent",
-				"value": [
-					{
-						"type": "heading1",
-						"content": {
-							"text": "Hola!",
-							"spans": []
-						},
-						"direction": "ltr"
-					}
-				]
 			}
 		},
 		"items": []

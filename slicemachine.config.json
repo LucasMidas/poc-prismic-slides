@@ -2,5 +2,5 @@
   "repositoryName": "poc-prismic-slides",
   "adapter": "@slicemachine/adapter-next",
   "libraries": ["./src/slices"],
-  "localSliceSimulatorURL": "https://poc-prismic-slides.vercel.app/slice-simulator"
+  "localSliceSimulatorURL": "http://localhost:3000/slice-simulator"
 }
