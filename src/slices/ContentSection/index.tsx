@@ -1,7 +1,7 @@
 import { Content, isFilled } from "@prismicio/client";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import { SliceComponentProps } from "@prismicio/react";
-
+import styles from "./content-section.module.css";
 /**
  * Props for `ContentSection`.
  */
@@ -16,39 +16,29 @@ const ContentSection = ({ slice }: ContentSectionProps): JSX.Element => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      style={{
-        height: "calc(100vh - 88px)",
-        display: "grid",
-        gridTemplateColumns: "1.5fr 1fr",
-      }}
+      className={styles["content-section-container"]}
     >
-      <article
-        style={{
-          padding: "16px",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          gap: "16px",
-        }}
-      >
+      <article className={styles["content-section-article"]}>
         {isFilled.keyText(slice.primary.title) && (
           <header>
-            <h1 style={{ fontSize: "3.5rem", fontWeight: 700 }}>
+            <h1 className={styles["content-section-header"]}>
               {slice.primary.title}
             </h1>
           </header>
         )}
         {isFilled.keyText(slice.primary.subtitle) && (
           <header>
-            <h2 style={{ fontSize: "2.5rem", fontWeight: 400 }}>
+            <h2 className={styles["content-section-secondary-header"]}>
               {slice.primary.subtitle}
             </h2>
           </header>
         )}
         {isFilled.keyText(slice.primary.text) && (
-          <p style={{ fontSize: "1em" }}>{slice.primary.text}</p>
+          <p className={styles["content-section-description"]}>
+            {slice.primary.text}
+          </p>
         )}
-        <div style={{ display: "flex", gap: "16px", paddingTop: "16px" }}>
+        <div className={styles["content-section-call-to-action"]}>
           {isFilled.link(slice.primary.download_link) && (
             <PrismicNextLink
               field={slice.primary.download_link}
@@ -78,13 +68,7 @@ const ContentSection = ({ slice }: ContentSectionProps): JSX.Element => {
         </div>
       </article>
       {isFilled.image(slice.primary.phone_image) && (
-        <figure
-          style={{
-            height: "calc(100vh - 88px)",
-            display: "flex",
-            justifyContent: "right",
-          }}
-        >
+        <figure className={styles["content-section-image"]}>
           <PrismicNextImage
             field={slice.primary.phone_image}
             style={{

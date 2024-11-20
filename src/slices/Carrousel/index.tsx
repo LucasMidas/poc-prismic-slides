@@ -2,7 +2,7 @@ import { Content, isFilled } from "@prismicio/client";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import { SliceComponentProps } from "@prismicio/react";
 import Image from "next/image";
-
+import styles from "./carrousel.module.css";
 /**
  * Props for `Carrousel`.
  */
@@ -17,26 +17,9 @@ const Carrousel = ({ slice }: CarrouselProps): JSX.Element => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      style={{
-        height: "500px",
-        display: "grid",
-        gridTemplateRows: "1fr 2fr",
-        backgroundColor: "#F7F7F7",
-        borderRadius: "30px 300px",
-        padding: "16px",
-        margin: "16px",
-        marginTop: "32px",
-        marginBottom: "32px",
-      }}
+      className={styles["carrousel-container"]}
     >
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 2fr",
-          alignItems: "baseline",
-          paddingTop: "16px",
-        }}
-      >
+      <div className={styles["carrousel-texts-container"]}>
         <header>
           {isFilled.keyText(slice.primary.carrousel_title) && (
             <h1 style={{ fontSize: "2em", color: "#6439FF" }}>
@@ -52,7 +35,7 @@ const Carrousel = ({ slice }: CarrouselProps): JSX.Element => {
       </div>
       <div
         style={{
-          height: "266px",
+          height: "auto",
           display: "grid",
           gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))",
           gap: "16px",

@@ -545,12 +545,12 @@ export interface FooterSectionSliceDefaultPrimary {
   /**
    * footer_section_highlighted_text field in *FooterSection → Default → Primary*
    *
-   * - **Field Type**: Rich Text
+   * - **Field Type**: Text
    * - **Placeholder**: *None*
    * - **API ID Path**: footer_section.default.primary.footer_section_highlighted_text
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  footer_section_highlighted_text: prismic.RichTextField;
+  footer_section_highlighted_text: prismic.KeyTextField;
 }
 
 /**
@@ -670,6 +670,33 @@ type NavBarSliceVariation = NavBarSliceDefault;
  */
 export type NavBarSlice = prismic.SharedSlice<"nav_bar", NavBarSliceVariation>;
 
+/**
+ * Default variation for Prueba Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type PruebaSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  never
+>;
+
+/**
+ * Slice variation for *Prueba*
+ */
+type PruebaSliceVariation = PruebaSliceDefault;
+
+/**
+ * Prueba Shared Slice
+ *
+ * - **API ID**: `prueba`
+ * - **Description**: Prueba
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type PruebaSlice = prismic.SharedSlice<"prueba", PruebaSliceVariation>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -721,6 +748,9 @@ declare module "@prismicio/client" {
       NavBarSliceDefaultPrimary,
       NavBarSliceVariation,
       NavBarSliceDefault,
+      PruebaSlice,
+      PruebaSliceVariation,
+      PruebaSliceDefault,
     };
   }
 }
