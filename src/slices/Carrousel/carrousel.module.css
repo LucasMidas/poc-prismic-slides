@@ -18,7 +18,7 @@
   padding-top: 16px;
 }
 
-@media (width < 768px) {
+@media (width <= 768px) {
   .carrousel-container {
     display: flex;
     flex-direction: column;
