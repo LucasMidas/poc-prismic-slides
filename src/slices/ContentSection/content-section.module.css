@@ -1,6 +1,8 @@
 .content-section-container {
   display: grid;
   grid-template-columns: 1.5fr 1fr;
+  position: relative;
+  max-height: 500px;
 }
 
 .content-section-article {
@@ -9,6 +11,7 @@
   flex-direction: column;
   justify-content: center;
   gap: 16px;
+  z-index: 2;
 }
 
 .content-section-header {
@@ -26,6 +29,7 @@
   max-height: 500px;
   display: flex;
   justify-content: right;
+  z-index: 2;
 }
 
 .content-section-description {
@@ -36,6 +40,18 @@
   display: flex;
   gap: 16px;
   padding-top: 16px;
+}
+
+.content-section-decoration {
+  width: 700px;
+  height: 700px;
+  background-color: #00ffb3;
+  position: absolute;
+  z-index: 1;
+  rotate: -60deg;
+  border-radius: 100px;
+  top: -380px;
+  right: -200px;
 }
 
 @media (width <= 768px) {
@@ -66,5 +82,8 @@
   .content-section-description {
     font-size: 0.9em;
     text-align: center;
+  }
+  .content-section-decoration {
+    display: none;
   }
 }
