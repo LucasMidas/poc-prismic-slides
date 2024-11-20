@@ -6,38 +6,35 @@ import { SliceComponentProps } from "@prismicio/react";
  * Props for `NavBar`.
  */
 export type NavBarProps = SliceComponentProps<Content.NavBarSlice>;
+import styles from "./nav-bar.module.css";
+import Image from "next/image";
 
 /**
  * Component for "NavBar" Slices.
  */
 const NavBar = ({ slice }: NavBarProps): JSX.Element => {
+  console.log(slice.primary);
   return (
     <nav
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      style={{
-        width: "auto",
-        height: "88px",
-        display: "grid",
-        gridTemplateColumns: "1fr 3fr",
-        padding: "16px",
-        justifyContent: "space-between",
-      }}
+      className={styles["nav-bar"]}
     >
+      <Image
+        aria-hidden
+        src="/menu_icon.svg"
+        alt="menu_icon"
+        width={40}
+        height={40}
+        className={styles["menu_icon"]}
+      />
       {isFilled.image(slice.primary.logo) && (
-        <figure style={{ display: "flex", alignItems: "center" }}>
+        <figure className={styles.logo}>
           <PrismicNextImage field={slice.primary.logo} />
         </figure>
       )}
-      <ul
-        style={{
-          display: "grid",
-          gridTemplateColumns: "3fr 1fr",
-          alignItems: "center",
-          justifyContent: "space-between",
-        }}
-      >
-        <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+      <ul className={styles.menu}>
+        <div className={styles["menu-links-group"]}>
           {isFilled.group(slice.primary.links) &&
             slice.primary.links.map((link, i) => (
               <li key={i} style={{ listStyleType: "none" }}>
@@ -45,13 +42,7 @@ const NavBar = ({ slice }: NavBarProps): JSX.Element => {
               </li>
             ))}
         </div>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "flex-end",
-            gap: "16px",
-          }}
-        >
+        <div className={styles["menu-fixed-links"]}>
           {isFilled.link(slice.primary.sign_in) && (
             <li style={{ listStyleType: "none" }}>
               <PrismicNextLink
@@ -64,12 +55,7 @@ const NavBar = ({ slice }: NavBarProps): JSX.Element => {
             <li style={{ listStyleType: "none" }}>
               <PrismicNextLink
                 field={slice.primary.sign_up}
-                style={{
-                  padding: "10px 20px",
-                  borderRadius: "6px",
-                  background: "#6439FF",
-                  color: "white",
-                }}
+                className={styles["sign-up-link"]}
               />
             </li>
           )}

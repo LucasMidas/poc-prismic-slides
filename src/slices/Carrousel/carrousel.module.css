@@ -1,0 +1,35 @@
+.carrousel-container {
+  height: auto;
+  min-height: 500px;
+  display: grid;
+  grid-template-rows: 1fr 2fr;
+  background-color: #f7f7f7;
+  border-radius: 30px 300px;
+  padding: 16px;
+  margin: 16px;
+  margin-top: 32px;
+  margin-bottom: 32px;
+}
+
+.carrousel-texts-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  align-items: baseline;
+  padding-top: 16px;
+}
+
+@media (width < 768px) {
+  .carrousel-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+  }
+  .carrousel-texts-container {
+    padding-top: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 80%;
+  }
+}

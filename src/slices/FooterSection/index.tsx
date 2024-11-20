@@ -1,7 +1,7 @@
 import { Content } from "@prismicio/client";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
-
+import styles from "./footer-section.module.css";
 /**
  * Props for `FooterSection`.
  */
@@ -20,29 +20,43 @@ const FooterSection = ({ slice }: FooterSectionProps): JSX.Element => {
       style={{
         backgroundColor:
           slice.primary.footer_section_background_color || "#0C8CE9",
-        height: "500px",
-        borderRadius: "120px 120px 0px 0px",
-        display: "grid",
-        gridTemplateColumns: "3fr 2fr",
-        justifyItems: "center",
-        alignItems: "center",
-        gap: "16px",
-        width: "100%",
       }}
+      className={styles["footer-section-container"]}
     >
-      <article
+      <span
         style={{
-          color: "white",
-          display: "flex",
-          flexDirection: "column",
-          gap: "40px",
-          maxWidth: "500px",
+          width: "50vw",
+          height: "100%",
+          backgroundColor: "#00FFB3",
+          position: "absolute",
+          zIndex: "1",
+          rotate: "-105deg",
+          borderRadius: "100px",
+          bottom: "-480px",
+          left: "-32px",
         }}
-      >
+      />
+      <span className={styles["footer-section-background-right"]} />
+      <article className={styles["footer-section-article"]}>
         <header>
-          <PrismicRichText field={slice.primary.footer_section_main_text} />
           <PrismicRichText
-            field={slice.primary.footer_section_highlighted_text}
+            field={slice.primary.footer_section_main_text}
+            components={{
+              heading1: ({ children }) => (
+                <h1
+                  style={{
+                    fontSize: "2em",
+                    fontWeight: 400,
+                    textWrap: "balance",
+                  }}
+                >
+                  {children}{" "}
+                  <strong>
+                    {slice.primary.footer_section_highlighted_text}
+                  </strong>
+                </h1>
+              ),
+            }}
           />
         </header>
         <PrismicRichText field={slice.primary.footer_section_secondary_text} />
@@ -57,14 +71,14 @@ const FooterSection = ({ slice }: FooterSectionProps): JSX.Element => {
           }}
         />
       </article>
-      <figure style={{ height: "100%" }}>
+      <figure className={styles["footer-section-image"]}>
         <PrismicNextImage
           field={slice.primary.footer_section_image}
           style={{
+            right: "-24px",
             width: "auto",
             objectFit: "contain",
-            height: "100%",
-            position: "relative",
+            height: "99%",
           }}
         />
       </figure>
