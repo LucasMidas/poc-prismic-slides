@@ -67,6 +67,7 @@ const ContentSection = ({ slice }: ContentSectionProps): JSX.Element => {
           )}
         </div>
       </article>
+      <span className={styles["content-section-decoration"]} />
       {isFilled.image(slice.primary.phone_image) && (
         <figure className={styles["content-section-image"]}>
           <PrismicNextImage
