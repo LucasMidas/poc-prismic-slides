@@ -11,6 +11,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "footer_section": {
+              "type": "SharedSlice"
+            },
             "carrousel": {
               "type": "SharedSlice"
             },

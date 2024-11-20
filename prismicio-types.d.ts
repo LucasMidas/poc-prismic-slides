@@ -5,6 +5,7 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 type HomeDocumentDataSlicesSlice =
+  | FooterSectionSlice
   | CarrouselSlice
   | NavBarSlice
   | AlternateGridSlice
@@ -488,6 +489,101 @@ export type ContentSectionSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *FooterSection → Default → Primary*
+ */
+export interface FooterSectionSliceDefaultPrimary {
+  /**
+   * footer_section_image field in *FooterSection → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer_section.default.primary.footer_section_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  footer_section_image: prismic.ImageField<never>;
+
+  /**
+   * footer_section_main_text field in *FooterSection → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer_section.default.primary.footer_section_main_text
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  footer_section_main_text: prismic.RichTextField;
+
+  /**
+   * footer_section_secondary_text field in *FooterSection → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer_section.default.primary.footer_section_secondary_text
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  footer_section_secondary_text: prismic.RichTextField;
+
+  /**
+   * footer_section_link field in *FooterSection → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer_section.default.primary.footer_section_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  footer_section_link: prismic.LinkField;
+
+  /**
+   * footer_section_background_color field in *FooterSection → Default → Primary*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer_section.default.primary.footer_section_background_color
+   * - **Documentation**: https://prismic.io/docs/field#color
+   */
+  footer_section_background_color: prismic.ColorField;
+
+  /**
+   * footer_section_highlighted_text field in *FooterSection → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer_section.default.primary.footer_section_highlighted_text
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  footer_section_highlighted_text: prismic.RichTextField;
+}
+
+/**
+ * Default variation for FooterSection Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type FooterSectionSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<FooterSectionSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *FooterSection*
+ */
+type FooterSectionSliceVariation = FooterSectionSliceDefault;
+
+/**
+ * FooterSection Shared Slice
+ *
+ * - **API ID**: `footer_section`
+ * - **Description**: FooterSection
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type FooterSectionSlice = prismic.SharedSlice<
+  "footer_section",
+  FooterSectionSliceVariation
+>;
+
+/**
  * Item in *NavBar → Default → Primary → links*
  */
 export interface NavBarSliceDefaultPrimaryLinksItem {
@@ -616,6 +712,10 @@ declare module "@prismicio/client" {
       ContentSectionSliceDefaultPrimary,
       ContentSectionSliceVariation,
       ContentSectionSliceDefault,
+      FooterSectionSlice,
+      FooterSectionSliceDefaultPrimary,
+      FooterSectionSliceVariation,
+      FooterSectionSliceDefault,
       NavBarSlice,
       NavBarSliceDefaultPrimaryLinksItem,
       NavBarSliceDefaultPrimary,

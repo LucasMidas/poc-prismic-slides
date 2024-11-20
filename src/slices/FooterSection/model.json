@@ -1,0 +1,71 @@
+{
+  "id": "footer_section",
+  "type": "SharedSlice",
+  "name": "FooterSection",
+  "description": "FooterSection",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "footer_section_image": {
+          "type": "Image",
+          "config": {
+            "label": "footer_section_image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "footer_section_main_text": {
+          "type": "StructuredText",
+          "config": {
+            "label": "footer_section_main_text",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl,heading1"
+          }
+        },
+        "footer_section_secondary_text": {
+          "type": "StructuredText",
+          "config": {
+            "label": "footer_section_secondary_text",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "footer_section_link": {
+          "type": "Link",
+          "config": {
+            "label": "footer_section_link",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "select": null,
+            "allowText": true
+          }
+        },
+        "footer_section_background_color": {
+          "type": "Color",
+          "config": {
+            "label": "footer_section_background_color",
+            "placeholder": ""
+          }
+        },
+        "footer_section_highlighted_text": {
+          "type": "StructuredText",
+          "config": {
+            "label": "footer_section_highlighted_text",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
